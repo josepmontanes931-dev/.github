@@ -1,0 +1,53 @@
+name: Decisió de Josep
+description: Registra una decisió de Josep perquè els agents la considerin rebuda (protocol TORRE).
+title: "Decisió de Josep: "
+labels: ["decisio-josep"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Una decisió només consta com a rebuda quan és en una issue o a TORRE.
+        Omple només el que calgui; els camps marcats amb * són obligatoris.
+  - type: input
+    id: referencia
+    attributes:
+      label: Issue o PR a què respon *
+      description: Enllaç o número, per exemple #610.
+      placeholder: "#610"
+    validations:
+      required: true
+  - type: dropdown
+    id: tipus
+    attributes:
+      label: Tipus de decisió *
+      options:
+        - Aprovo
+        - No aprovo
+        - Aprovo amb canvis (explica'ls a sota)
+        - Trio una opció (indica-la a sota)
+        - Ajorno la decisió
+    validations:
+      required: true
+  - type: textarea
+    id: decisio
+    attributes:
+      label: Decisió, amb les teves paraules *
+      description: Què decideixes. Si tries una opció, copia'n el nom.
+    validations:
+      required: true
+  - type: checkboxes
+    id: limits
+    attributes:
+      label: Límits que continuen vigents
+      description: Marca els que s'apliquen. Si no en marques cap, valen els de TORRE.
+      options:
+        - label: No autoritza despesa més enllà del pressupost ja aprovat.
+        - label: No autoritza desplegaments ni activacions.
+        - label: No autoritza obrir proves o casos reservats.
+        - label: No autoritza fusionar PR.
+  - type: input
+    id: vigencia
+    attributes:
+      label: Vigència (opcional)
+      description: Fins quan val, si té data límit.
+      placeholder: "2026-11-30"
