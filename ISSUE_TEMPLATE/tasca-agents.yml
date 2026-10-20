@@ -1,0 +1,49 @@
+name: Tasca per a agents
+description: Una tasca per a Codex o Claude Code, amb abast i criteris d'acceptació (protocol TORRE).
+title: "Tasca: "
+labels: ["tasca-agents"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Una tasca és una issue. Els agents la llegeixen sencera, la reserven amb un
+        comentari i registren els resultats aquí. Josep decideix fusions i tancaments.
+  - type: textarea
+    id: objectiu
+    attributes:
+      label: Objectiu *
+      description: Què ha de quedar fet, en una o dues frases.
+    validations:
+      required: true
+  - type: dropdown
+    id: agent
+    attributes:
+      label: Qui l'executa *
+      options:
+        - Codex executa, Claude Code revisa
+        - Claude Code executa, Codex revisa
+        - Qualsevol dels dos
+    validations:
+      required: true
+  - type: textarea
+    id: abast
+    attributes:
+      label: Abast i fora d'abast
+      description: Què es pot tocar i què no.
+  - type: textarea
+    id: criteris
+    attributes:
+      label: Criteris d'acceptació *
+      description: Llista de comprovacions que han de passar per donar-la per acabada.
+      value: |
+        - [ ]
+    validations:
+      required: true
+  - type: checkboxes
+    id: limits
+    attributes:
+      label: Límits
+      options:
+        - label: Sense despesa d'API ni crides de pagament.
+        - label: Sense desplegaments.
+        - label: Sense obrir casos reservats.
